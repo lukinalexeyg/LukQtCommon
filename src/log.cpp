@@ -14,7 +14,7 @@ QString lastErrorString()
 
     const _com_error comError(dwCode);
 
-    return QString("%1:%2")
+    return QStringLiteral("%1:%2")
             .arg(dwCode)
             .arg(QString::fromWCharArray(comError.ErrorMessage()));
 }

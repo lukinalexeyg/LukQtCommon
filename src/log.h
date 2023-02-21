@@ -21,11 +21,11 @@ private:
 #define INFO_LOG qInfo().noquote() << __FUNCTION__ <<
 #define INFO_LOG_ qInfo().noquote() << __FUNCTION__
 
-#define FUNCTION_LINE QString("%1:%2:").arg(__FUNCTION__).arg(__LINE__)
+#define FUNCTION_LINE QStringLiteral("%1:%2:").arg(__FUNCTION__).arg(__LINE__)
 
 #ifdef Q_OS_WIN
 QString lastErrorString();
-#define FUNCTION_LINE_E QString("%1 [%2]").arg(FUNCTION_LINE).arg(lastErrorString())
+#define FUNCTION_LINE_E QStringLiteral("%1 [%2]").arg(FUNCTION_LINE).arg(lastErrorString())
 #else
 #define FUNCTION_LINE_E FUNCTION_LINE
 #endif
@@ -41,6 +41,6 @@ QString lastErrorString();
 #define FATAL_LOG qFatal().noquote() << FUNCTION_LINE <<
 #define FATAL_LOG_E qFatal().noquote() << FUNCTION_LINE_E <<
 
-#define dump(x) QString("{%1: %2}").arg(#x).arg(x)
+#define dump(x) QStringLiteral("{%1: %2}").arg(#x).arg(x)
 
 #endif // LOG_H

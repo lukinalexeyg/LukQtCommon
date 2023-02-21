@@ -1,27 +1,35 @@
 #ifndef MACROS_H
 #define MACROS_H
 
-#define STR(x) #x
+#define STR(s) #s
 
-#define BOOL_STR(x) x ? "true" : "false"
+#define INIT_STR(s) s(STR(s))
 
-#define QL1(string) QLatin1String(string)
+#define STATIC_CONST_LATIN1_STR(s) static const QLatin1String INIT_STR(s)
 
-#define QSL(string) QStringLiteral(string)
+#define QUOTE_DOUBLE(s) "\""#s"\""
 
-#define size_of_array(array) (sizeof((array)) / sizeof((array)[0]))
+#define QUOTE_SINGLE(s) "\'"#s"\'"
 
-#define s_cast(type, value) static_cast<type>(value)
-#define s_cast_int(value) s_cast(int, value)
-#define s_cast_uint(value) s_cast(uint, value)
-#define s_cast_real(value) s_cast(qreal, value)
-#define UINT_N1 s_cast_uint(-1)
+#define BOOL_STR(s) s ? "true" : "false"
 
-#define d_cast(type, value) dynamic_cast<type>(value)
+#define QL1(s) QLatin1String(s)
 
-#define r_cast(type, value) reinterpret_cast<type>(value)
-#define r_cast_lpcstr(value) r_cast(const char*, value)
-#define r_cast_lpcwstr(value) r_cast(const wchar_t*, value)
+#define QSL(s) QStringLiteral(s)
+
+#define SIZE_OF_ARRAY(array) (sizeof((array)) / sizeof((array)[0]))
+
+#define S_CAST(type, value) static_cast<type>(value)
+#define S_CAST_INT(value) S_CAST(int, value)
+#define S_CAST_UINT(value) S_CAST(uint, value)
+#define S_CAST_REAL(value) S_CAST(qreal, value)
+#define UINT_N1 S_CAST_UINT(-1)
+
+#define D_CAST(type, value) dynamic_cast<type>(value)
+
+#define R_CAST(type, value) reinterpret_cast<type>(value)
+#define R_CAST_LPCSTR(value) R_CAST(const char*, value)
+#define R_CAST_LPCWSTR(value) R_CAST(const wchar_t*, value)
 
 #define q_cast(type, value) qobject_cast<type>(value)
 
@@ -53,7 +61,7 @@
 #define foreach_iterator_const_ptr_inc(it, container) for (auto it = container->cbegin(); it != container->cend(); ++it)
 #define foreach_iterator_const_ptr_dec(it, container) for (auto it = container->cend()-1; it != container->cbegin()-1; --it)
 
-#define sort_(container) std::sort(container.begin(), container.end())
-#define sort_func(container, func) std::sort(container.begin(), container.end(), func)
+#define SORT(container) std::sort(container.begin(), container.end())
+#define SORT_FUNC(container, func) std::sort(container.begin(), container.end(), func)
 
 #endif // MACROS_H
