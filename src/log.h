@@ -3,8 +3,6 @@
 
 #include <QDebug>
 
-#define FUNCTION_LOG FunctionLog functionLog(__FUNCTION__)
-
 class FunctionLog
 {
 public:
@@ -14,6 +12,8 @@ public:
 private:
     const char* m_function;
 };
+
+#define FUNCTION_LOG FunctionLog functionLog(__FUNCTION__)
 
 #define DEBUG_LOG qDebug().noquote() << __FUNCTION__ <<
 #define DEBUG_LOG_ qDebug().noquote() << __FUNCTION__
@@ -41,6 +41,6 @@ QString lastErrorString();
 #define FATAL_LOG qFatal().noquote() << FUNCTION_LINE <<
 #define FATAL_LOG_E qFatal().noquote() << FUNCTION_LINE_E <<
 
-#define dump(x) QStringLiteral("{%1: %2}").arg(#x).arg(x)
+#define DUMP(x) " {" << #x << ":" << x << "} "
 
 #endif // LOG_H

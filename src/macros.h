@@ -3,19 +3,11 @@
 
 #define STR(s) #s
 
-#define INIT_STR(s) s(STR(s))
-
-#define STATIC_CONST_LATIN1_STR(s) static const QLatin1String INIT_STR(s)
-
-#define QUOTE_DOUBLE(s) "\""#s"\""
-
-#define QUOTE_SINGLE(s) "\'"#s"\'"
-
-#define BOOL_STR(s) s ? "true" : "false"
-
 #define QL1(s) QLatin1String(s)
 
 #define QSL(s) QStringLiteral(s)
+
+#define STATIC_CONST_LATIN1_STR(s) static const QLatin1String s(STR(s))
 
 #define SIZE_OF_ARRAY(array) (sizeof((array)) / sizeof((array)[0]))
 
@@ -32,6 +24,7 @@
 #define R_CAST_LPCWSTR(value) R_CAST(const wchar_t*, value)
 
 #define q_cast(type, value) qobject_cast<type>(value)
+#define SET_QOBJECT(type, a, b) type a = q_cast(type, b)
 
 #define foreach_index_inc(i, count) for (int i = 0; i < count; ++i)
 #define foreach_index_dec(i, count) for (int i = count-1; i >= 0; --i)
