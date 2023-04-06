@@ -7,7 +7,7 @@
 
 #define QSL(s) QStringLiteral(s)
 
-#define STATIC_CONST_LATIN1_STR(s) static const QLatin1String s(STR(s))
+#define LATIN1_STRING(s) QLatin1String s(STR(s))
 
 #define SIZE_OF_ARRAY(array) (sizeof((array)) / sizeof((array)[0]))
 
